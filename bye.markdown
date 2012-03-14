@@ -1,8 +1,15 @@
 ---
-title: No puedo pelear porque soy un calvito
-Como va todo
+title: Guía GitHub
 ---
-<link rel="stylesheet" type="text/css" href="/style.css" />
-
-
-####It would be cool to have some markdown here
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Guía GitHub</title>
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+</head>
+<body>
+  <div id="container">
+    ####It would be cool to have some markdown here
+  </div>
+</body>
