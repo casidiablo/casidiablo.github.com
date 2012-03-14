@@ -2,4 +2,9 @@
 title: Guía GitHub
 ---
 <link rel="stylesheet" type="text/css" href="/style.css" />
-####It would be cool to have some markdown here
+
+####Esta página fue creada con Markdown
+
+```java
+new Object().toString();
+```
