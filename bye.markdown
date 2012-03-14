@@ -5,6 +5,4 @@ title: Guía GitHub
 
 ####Esta página fue creada con Markdown
 
-```java
-new Object().toString();
-```
+    new Object().toString();
