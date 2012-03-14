@@ -1,10 +1,9 @@
 ---
 title: Guía GitHub
 ---
-<html>
 <head>
   <meta charset='utf-8'>
-  <title>Guía GitHub</title>
+  <title>Gu&iacute;a GitHub</title>
   <link rel="stylesheet" type="text/css" href="/style.css" />
 </head>
 <body>
