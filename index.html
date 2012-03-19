@@ -26,7 +26,7 @@
 	</head>
 	<body>
 	<h1>GitHub for non-dummies!</h1>
-	<p style="font-weight: bold; margin: 2em 0 1em; font-size: 1.3em;">Esta gu&iacute;a asume conocimientos previos sobre Git y el uso de la l&iacute;nea de comandos; asume adem&aacute;s que quien est&aacute; leyendo tiene sentido com&uacute;n y sabe usar el Internet. Est&aacute; enfocado <strong>exclusivamente</strong> en <a href="https://github.com/">GitHub.com</a>, sin embargo se habla de Github cuando sea extrictamente necesario, lo demás se hace en una línea de comandos.</p>
+	<p style="font-weight: bold; margin: 2em 0 1em; font-size: 1.3em;">Esta gu&iacute;a asume conocimientos previos sobre Git y el uso de la l&iacute;nea de comandos; asume adem&aacute;s que quien est&aacute; leyendo tiene sentido com&uacute;n y sabe usar el Internet. Est&aacute; enfocado <strong>exclusivamente</strong> en <a href="https://github.com/">GitHub.com</a>, sin embargo se habla de Github cuando sea extrictamente necesario, lo dem&aacute;s se hace en una l&iacute;nea de comandos.</p>
 		<div id="accordion" style="height:400px;">
 			<div>
 				<h3><a href="#">Primeros pasos</a></h3>
@@ -45,29 +45,26 @@
 				<p>Para descargar un poyecto basta con hacer un clone del mismo. Por ejemplo, suponiendo que el usuario es 'casidiablo' y el proyecto creado fue 'persistence':</p>
 				<pre>$ git clone git@github.com:casidiablo/persistence.git</pre>
 				
-				<p>También es posible clonar repositorios cuyo remoto apunte a un HTTPS, lo cual es útil cuando estamos detrás de un proxy:</p>
+				<p>Tambi&eacute;n es posible clonar repositorios cuyo remoto apunte a un HTTPS, lo cual es &uacute;til cuando estamos detr&aacute;s de un proxy:</p>
 				
 				<pre>$ git clone https://casidiablo@github.com/casidiablo/persistence.git</pre>
 				<h2>Modificar archivos desde el computador y subirlos a github</h2>
 				Una vez haya hecho los cambios en los archivos, es necesario hacer un commit (salva los cambios) y posteriormente un push (sube los cambios
 					al repositorio de GitHub). Como ha de saber, Git es un sistema de control de versiones decentralizado, lo cual implica que los commits no tienen
-					efecto en el servidor... solo hacer push a los cambios tiene efectos sobre el servidor. Además, es posible tener más de un servidor para el mismo repositorio (en el ecosistema de Git se llaman 'remotes' a los servidores configurados para determinado repositorio local).
+					efecto en el servidor... solo hacer push a los cambios tiene efectos sobre el servidor. Adem&aacute;s, es posible tener m&aacute;s de un servidor para el mismo repositorio (en el ecosistema de Git se llaman 'remotes' a los servidores configurados para determinado repositorio local).
 					<p>Cuando se han hecho cambios, es posible hacer un commit selectivo de los archivos a los cuales se les va a hacer commit. Esto se hace con el
-						comando <code>git add nombre_del_archivo</code>, sin embargo es posible añadir todos los cambios (modificaciones, nuevos archivos o archivos
-						borrados, etc.) usando el comando <code>git add -A</code>. Una vez que se han añadido los archivos a los cuales se les va a hacer commit, se
-						debe hacer commit y luego push así:</p>
+						comando <code>git add nombre_del_archivo</code>, sin embargo es posible a&ntilde;adir todos los cambios (modificaciones, nuevos archivos o archivos
+						borrados, etc.) usando el comando <code>git add -A</code>. Una vez que se han a&ntilde;adido los archivos a los cuales se les va a hacer commit, se
+						debe hacer commit y luego push as&iacute;:</p>
 					<pre>
-git commit -m 'Un comentario para el commit'
-git push origin master
+$ git commit -m 'Un comentario para el commit'
+$ git push origin master
 					</pre>
-					<p>El comando <code>git push</code> recibe como parámetro el nombre del remote a donde se va a hacer commit (el remote por defecto es 'origin'
-						aunque el nombre no es obligatorio), y el nombre de la rama principal (por defecto 'master' aunque tampoco es obligatorio llamarla así).</p>
-				</div>
-			</div>
-			<div>
-				<h3><a href="#">Descargar archivos modificados al computador</a></h3>
-				<div>Para descargar cambios de un repositorio lo normal es usar el comando <code>git pull</code> el cual descarga los cambios y trata de mezclarlos con el 
-					repositorio actual. Sin embargo, la mejor manera de hacer estas cosas, en mi humilde opinión, es hacer primero un fetch y luego un merge manualmente.
+					<p>El comando <code>git push</code> recibe como par&aacute;metro el nombre del remote a donde se va a hacer commit (el remote por defecto es 'origin'
+						aunque el nombre no es obligatorio), y el nombre de la rama principal (por defecto 'master' aunque tampoco es obligatorio llamarla as&iacute;).</p>
+				<h2>Descargar archivos modificados al computador</h2>
+				Para descargar cambios de un repositorio lo normal es usar el comando <code>git pull</code> el cual descarga los cambios y trata de mezclarlos con el 
+					repositorio actual. Sin embargo, la mejor manera de hacer estas cosas, en mi humilde opini&oacute;n, es hacer primero un fetch y luego un merge manualmente.
 					Por ejemplo:
 					<pre>
 $ # suponiendo que estamos en el repositorio...
@@ -80,24 +77,24 @@ $ git merge origin/master # esto mezcla los cambios remotos con los locales
 			</div>
 			<div>
 				<h3><a href="#">Forks y pull requests</a></h3>
-				<div><p>Esta característica de GitHub permite clonar un repositorio público ajeno, de tal forma que podamos hacer modificaciones en el código. Basta con
-					ir al repositorio al cual se va a hacer fork y hacer click en el botón Fork:</p>
+				<div><p>Esta caracter&iacute;stica de GitHub permite clonar un repositorio p&uacute;blico ajeno, de tal forma que podamos hacer modificaciones en el c&oacute;digo. Basta con
+					ir al repositorio al cual se va a hacer fork y hacer click en el bot&oacute;n Fork:</p>
 					<img src="img/fork.png"/>
-					<p>Esto creará un nuevo repositorio en nuestra cuenta con el mismo nombre que el ajeno. Por ejemplo:
+					<p>Esto crear&aacute; un nuevo repositorio en nuestra cuenta con el mismo nombre que el ajeno. Por ejemplo:
 						<a href="https://github.com/mailinator/persistence">https://github.com/mailinator/persistence</a></p>
 				<h2>Trabajar sobre un fork</h2>
-				<p>La idea de los fork es poder modificar el código de otro desarrollador para cosas como corregir defectos, añadir nuevas funcionalidades, etc.
-					Para trabajar sobre un fork basta con clonar el repositorio clonado, hacer commit y push como se explicó anteriormente y posteriormente
-						sugerir un Pull Request al dueño del repositorio. Esto se hace desde la página de nuestro repositorio en donde verá este nuevo botón:</p>
+				<p>La idea de los fork es poder modificar el c&oacute;digo de otro desarrollador para cosas como corregir defectos, a&ntilde;adir nuevas funcionalidades, etc.
+					Para trabajar sobre un fork basta con clonar el repositorio clonado, hacer commit y push como se explic&oacute; anteriormente y posteriormente
+						sugerir un Pull Request al due&ntilde;o del repositorio. Esto se hace desde la p&aacute;gina de nuestro repositorio en donde ver&aacute; este nuevo bot&oacute;n:</p>
 					<img src="img/pull_request.png"/>
-					<p>Al hacer click debemos llenar un formulario con la información de los cambios hechos al repositorio. Este le llega en forma de mensaje
-						al dueño del repositorio, quien está en la libertad de aceptar o rechazar los cambios.</p>
+					<p>Al hacer click debemos llenar un formulario con la informaci&oacute;n de los cambios hechos al repositorio. Este le llega en forma de mensaje
+						al due&ntilde;o del repositorio, quien est&aacute; en la libertad de aceptar o rechazar los cambios.</p>
 				<h2>Aceptar un pull request</h2>
-				<p>Algunos cambios conllevan conflictos, es decir, no es posible hacer una mezcla automática (<code>git merge</code>). Si los cambios sugeridos
-					en el pull request son posibles de hacer, GitHub habilitará este botón:</p>
+				<p>Algunos cambios conllevan conflictos, es decir, no es posible hacer una mezcla autom&aacute;tica (<code>git merge</code>). Si los cambios sugeridos
+					en el pull request son posibles de hacer, GitHub habilitar&aacute; este bot&oacute;n:</p>
 					<img src="img/accept_pull_request.png"/>
-					<p>Si no es posible hacer un pull automático es necesario agregar un nuevo remoto a nuestro repositorio apuntando al repositorio del usuario
-						que ha sugerido el Pull Request. Una vez hecho esto, es necesario hacer un fetch como se mostró anteriormente, hacer merge, resolver los
+					<p>Si no es posible hacer un pull autom&aacute;tico es necesario agregar un nuevo remoto a nuestro repositorio apuntando al repositorio del usuario
+						que ha sugerido el Pull Request. Una vez hecho esto, es necesario hacer un fetch como se mostr&oacute; anteriormente, hacer merge, resolver los
 						conflictos y hacer push. Por ejemplo:</p>
 						<pre>
 $ git remote add foo git://github.com/casidiablo/prueba.git
@@ -109,7 +106,7 @@ $ git commit -m 'Mensaje'
 $ git push origin master
 						</pre>
 					<h2>Actualizar un fork cuando el upstream se ha actualizado</h2>
-					<p>Recordemos que Git es un sistema de control de versiones decentralizado... si quiere actualizar un fork basta con añadir el repositorio
+					<p>Recordemos que Git es un sistema de control de versiones decentralizado... si quiere actualizar un fork basta con a&ntilde;adir el repositorio
 						original como un nuevo remoto, hacer fetch y merge:</p>
 						<pre>
 $ git remote add original git://github.com/mailinator/prueba.git
@@ -120,16 +117,28 @@ $ git push origin master
 				</div>
 				<div>
 					<h3><a href="#">Ramas</a></h3>
-					<div><p>Un branch o rama es una nueva línea de desarrollo que se desprende de la línea principal (master). Los branches son utilizados para realizar
-						trabajo en paralelo sobre un mismo repositorio. Los casos más comunes de uso son: ramas en donde se realiza el desarrollo principal (en master
-						solo se ponen los cambios importantes o releases), ramas de experimentación, ramas de correccion de errores, etc.</p>
+					<div><p>Un branch o rama es una nueva l&iacute;nea de desarrollo que se desprende de la l&iacute;nea principal (master). Los branches son utilizados para realizar
+						trabajo en paralelo sobre un mismo repositorio. Los casos m&aacute;s comunes de uso son: ramas en donde se realiza el desarrollo principal (en master
+						solo se ponen los cambios importantes o releases), ramas de experimentaci&oacute;n, ramas de correccion de errores, etc.</p>
 						<p>Para crear una rama basta con ejecutar el comando <code>git checkout -b</code>:</p>
 						<pre>$ git checkout -b develop # crea una rama llamada develop a partir de la rama actual</pre>
 						<p>Luego, es posible seguir trabajando sobre el repositorio normalmente. Recuerde que los cambios realizados sobre una rama queda en esa rama
-							por siempre, a menos que se mezclen (merge) con otra rama. Para saber en qué rama se encuentra el comando <code>git status</code> es útil.
+							por siempre, a menos que se mezclen (merge) con otra rama. Para saber en qu&eacute; rama se encuentra el comando <code>git status</code> es &uacute;til.
 							Una vez los cambios se han hecho, es posible subir la rama al repostorio remoto; esto se hace con el comando push:</p>
 						<pre>$ git push origin develop # git push nombre_remoto nombre_rama</pre>
-						
+						<p>Si queremos unir dos ramas es necesario mezclarlas con el comando <code>git merge</code>. Git siempre intentar&aacute; hacer un fast-fordward,
+						es decir, intentar&aacute; unir las ramas:</p>
+						<pre>
+$ #suponiendo que estamos en la rama develop y ya hicimos commit de los cambios
+$ git checkout master
+$ git merge develop
+						</pre> 
+						<p>Algunas veces queremos que las ramas queden separadas (es decir, que los cambios hechos en una no queden en la otra), para ello debemos
+						evitar el fast-fordward as&iacute;:</p>
+						<pre>$ git merge --no-ff develop</pre>
+						<p>Solo algunas ramas deber&iacute;an existir en los repositorios remotos. Por ejemplo, una rama que se cree para experimentar con una nueva caracter&iacute;stica
+						no deber&iacute;a estar en el remoto, as&iacute; que una vez que se ha mezclado con una rama de desarrollo principal o cuando se quiera descartar es posible borrarla
+						con el comando <code>git branch -D nombre_rama</code></p>
 					</div>
 				</div>
 			</div>
