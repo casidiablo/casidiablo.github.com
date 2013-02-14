@@ -1,149 +1,134 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-		<title>GitHub for non-dummies</title>
-		<link type="text/css" href="css/south-street/jquery-ui-1.8.18.custom.css" rel="stylesheet" />	
-		<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
-		<script type="text/javascript">
-			$(function(){
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Groundy by casidiablo</title>
 
-				// Accordion
-				$("#accordion").accordion({ header: "h3", fillSpace: true});
-				
-				//hover states on the static widgets
-				$('#dialog_link, ul#icons li').hover(
-					function() { $(this).addClass('ui-state-hover'); }, 
-					function() { $(this).removeClass('ui-state-hover'); }
-				);
-				
-			});
-		</script>
-		<style type="text/css">
-			body{ font: 75% "Trebuchet MS", sans-serif; margin: 50px;}
-		</style>	
-	</head>
-	<body>
-	<h1>GitHub for non-dummies!</h1>
-	<p style="font-weight: bold; margin: 2em 0 1em; font-size: 1.3em;">Esta gu&iacute;a asume conocimientos previos sobre Git y el uso de la l&iacute;nea de comandos; asume adem&aacute;s que quien est&aacute; leyendo tiene sentido com&uacute;n y sabe usar el Internet. Est&aacute; enfocado <strong>exclusivamente</strong> en <a href="https://github.com/">GitHub.com</a>, sin embargo se habla de Github cuando sea extrictamente necesario, lo dem&aacute;s se hace en una l&iacute;nea de comandos.</p>
-		<div id="accordion" style="height:400px;">
-			<div>
-				<h3><a href="#">Primeros pasos</a></h3>
-				<div><h2>Crear un proyecto</h2>
-				Para crear un proyecto es necesario estar registrado en <a href="https://github.com/">Github.com</a>. Luego de crear la cuenta es posible acceder a ella usando http://github.com/nombre_usuario, por ejemplo <a href="http://github.com/casidiablo">casidiablo</a>:
-				<ul>
-					<li>Haga click en New Repository:<br/><br/>
-						<img src="img/new_repository.jpg"/><br/><br/>
-					</li>
-					<li>Digite la informaci&oacute;n del repositorio:<br/><br/>
-						<img src="img/info.jpg"/><br/><br/>
-					</li>
-					<li>Eso es todo... ahora puede acceder al repositorio as&iacute;: https://github.com/su_usuario/su_repositorio Por ejemplo: <a href="http://github.com/casidiablo/persistence">http://github.com/casidiablo/persistence</a>
-				</ul>	
-				<h2>Descargar un proyecto</h2>
-				<p>Para descargar un poyecto basta con hacer un clone del mismo. Por ejemplo, suponiendo que el usuario es 'casidiablo' y el proyecto creado fue 'persistence':</p>
-				<pre>$ git clone git@github.com:casidiablo/persistence.git</pre>
-				
-				<p>Tambi&eacute;n es posible clonar repositorios cuyo remoto apunte a un HTTPS, lo cual es &uacute;til cuando estamos detr&aacute;s de un proxy:</p>
-				
-				<pre>$ git clone https://casidiablo@github.com/casidiablo/persistence.git</pre>
-				<h2>Modificar archivos desde el computador y subirlos a github</h2>
-				Una vez haya hecho los cambios en los archivos, es necesario hacer un commit (salva los cambios) y posteriormente un push (sube los cambios
-					al repositorio de GitHub). Como ha de saber, Git es un sistema de control de versiones decentralizado, lo cual implica que los commits no tienen
-					efecto en el servidor... solo hacer push a los cambios tiene efectos sobre el servidor. Adem&aacute;s, es posible tener m&aacute;s de un servidor para el mismo repositorio (en el ecosistema de Git se llaman 'remotes' a los servidores configurados para determinado repositorio local).
-					<p>Cuando se han hecho cambios, es posible hacer un commit selectivo de los archivos a los cuales se les va a hacer commit. Esto se hace con el
-						comando <code>git add nombre_del_archivo</code>, sin embargo es posible a&ntilde;adir todos los cambios (modificaciones, nuevos archivos o archivos
-						borrados, etc.) usando el comando <code>git add -A</code>. Una vez que se han a&ntilde;adido los archivos a los cuales se les va a hacer commit, se
-						debe hacer commit y luego push as&iacute;:</p>
-					<pre>
-$ git commit -m 'Un comentario para el commit'
-$ git push origin master
-					</pre>
-					<p>El comando <code>git push</code> recibe como par&aacute;metro el nombre del remote a donde se va a hacer commit (el remote por defecto es 'origin'
-						aunque el nombre no es obligatorio), y el nombre de la rama principal (por defecto 'master' aunque tampoco es obligatorio llamarla as&iacute;).</p>
-				<h2>Descargar archivos modificados al computador</h2>
-				Para descargar cambios de un repositorio lo normal es usar el comando <code>git pull</code> el cual descarga los cambios y trata de mezclarlos con el 
-					repositorio actual. Sin embargo, la mejor manera de hacer estas cosas, en mi humilde opini&oacute;n, es hacer primero un fetch y luego un merge manualmente.
-					Por ejemplo:
-					<pre>
-$ # suponiendo que estamos en el repositorio...
-$ git fetch # esto descarga los cambios
-$ # suponiendo que los cambios estaban en la rama master y actualmente nos encontramos en esa rama...
-$ git diff origin/master # esto muestra las diferencias entre el estado de la rama actual y la remota
-$ git merge origin/master # esto mezcla los cambios remotos con los locales
-					</pre>
-				</div>
-			</div>
-			<div>
-				<h3><a href="#">Forks y pull requests</a></h3>
-				<div><p>Esta caracter&iacute;stica de GitHub permite clonar un repositorio p&uacute;blico ajeno, de tal forma que podamos hacer modificaciones en el c&oacute;digo. Basta con
-					ir al repositorio al cual se va a hacer fork y hacer click en el bot&oacute;n Fork:</p>
-					<img src="img/fork.png"/>
-					<p>Esto crear&aacute; un nuevo repositorio en nuestra cuenta con el mismo nombre que el ajeno. Por ejemplo:
-						<a href="https://github.com/mailinator/persistence">https://github.com/mailinator/persistence</a></p>
-				<h2>Trabajar sobre un fork</h2>
-				<p>La idea de los fork es poder modificar el c&oacute;digo de otro desarrollador para cosas como corregir defectos, a&ntilde;adir nuevas funcionalidades, etc.
-					Para trabajar sobre un fork basta con clonar el repositorio clonado, hacer commit y push como se explic&oacute; anteriormente y posteriormente
-						sugerir un Pull Request al due&ntilde;o del repositorio. Esto se hace desde la p&aacute;gina de nuestro repositorio en donde ver&aacute; este nuevo bot&oacute;n:</p>
-					<img src="img/pull_request.png"/>
-					<p>Al hacer click debemos llenar un formulario con la informaci&oacute;n de los cambios hechos al repositorio. Este le llega en forma de mensaje
-						al due&ntilde;o del repositorio, quien est&aacute; en la libertad de aceptar o rechazar los cambios.</p>
-				<h2>Aceptar un pull request</h2>
-				<p>Algunos cambios conllevan conflictos, es decir, no es posible hacer una mezcla autom&aacute;tica (<code>git merge</code>). Si los cambios sugeridos
-					en el pull request son posibles de hacer, GitHub habilitar&aacute; este bot&oacute;n:</p>
-					<img src="img/accept_pull_request.png"/>
-					<p>Si no es posible hacer un pull autom&aacute;tico es necesario agregar un nuevo remoto a nuestro repositorio apuntando al repositorio del usuario
-						que ha sugerido el Pull Request. Una vez hecho esto, es necesario hacer un fetch como se mostr&oacute; anteriormente, hacer merge, resolver los
-						conflictos y hacer push. Por ejemplo:</p>
-						<pre>
-$ git remote add foo git://github.com/casidiablo/prueba.git
-$ git fetch foo
-$ git merge foo/master
-$ # se hacen los cambios necesarios para corregir los conflictos
-$ git add -A
-$ git commit -m 'Mensaje'
-$ git push origin master
-						</pre>
-					<h2>Actualizar un fork cuando el upstream se ha actualizado</h2>
-					<p>Recordemos que Git es un sistema de control de versiones decentralizado... si quiere actualizar un fork basta con a&ntilde;adir el repositorio
-						original como un nuevo remoto, hacer fetch y merge:</p>
-						<pre>
-$ git remote add original git://github.com/mailinator/prueba.git
-$ git fetch original
-$ git merge original/master
-$ git push origin master
-						</pre>
-				</div>
-				<div>
-					<h3><a href="#">Ramas</a></h3>
-					<div><p>Un branch o rama es una nueva l&iacute;nea de desarrollo que se desprende de la l&iacute;nea principal (master). Los branches son utilizados para realizar
-						trabajo en paralelo sobre un mismo repositorio. Los casos m&aacute;s comunes de uso son: ramas en donde se realiza el desarrollo principal (en master
-						solo se ponen los cambios importantes o releases), ramas de experimentaci&oacute;n, ramas de correccion de errores, etc.</p>
-						<p>Para crear una rama basta con ejecutar el comando <code>git checkout -b</code>:</p>
-						<pre>$ git checkout -b develop # crea una rama llamada develop a partir de la rama actual</pre>
-						<p>Luego, es posible seguir trabajando sobre el repositorio normalmente. Recuerde que los cambios realizados sobre una rama queda en esa rama
-							por siempre, a menos que se mezclen (merge) con otra rama. Para saber en qu&eacute; rama se encuentra el comando <code>git status</code> es &uacute;til.
-							Una vez los cambios se han hecho, es posible subir la rama al repostorio remoto; esto se hace con el comando push:</p>
-						<pre>$ git push origin develop # git push nombre_remoto nombre_rama</pre>
-						<p>Si queremos unir dos ramas es necesario mezclarlas con el comando <code>git merge</code>. Git siempre intentar&aacute; hacer un fast-fordward,
-						es decir, intentar&aacute; unir las ramas:</p>
-						<pre>
-$ #suponiendo que estamos en la rama develop y ya hicimos commit de los cambios
-$ git checkout master
-$ git merge develop
-						</pre> 
-						<p>Algunas veces queremos que las ramas queden separadas (es decir, que los cambios hechos en una no queden en la otra), para ello debemos
-						evitar el fast-fordward as&iacute;:</p>
-						<pre>$ git merge --no-ff develop</pre>
-						<p>Solo algunas ramas deber&iacute;an existir en los repositorios remotos. Por ejemplo, una rama que se cree para experimentar con una nueva caracter&iacute;stica
-						no deber&iacute;a estar en el remoto, as&iacute; que una vez que se ha mezclado con una rama de desarrollo principal o cuando se quiera descartar es posible borrarla
-						con el comando <code>git branch -D nombre_rama</code></p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</body>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Groundy</h1>
+        <p>Sexy way to execute async/background tasks on Android</p>
+
+        <p class="view"><a href="https://github.com/casidiablo/groundy">View the Project on GitHub <small>casidiablo/groundy</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/casidiablo/groundy/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/casidiablo/groundy/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/casidiablo/groundy">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>Groundy library for Android</h1>
+
+<p>Groundy is a fancy implementation of the 'Service + ResultReceiver' technique which
+is heavily inspired in a Google I/O 2010 presentation by Virgil Dobjanschi
+called <a href="http://www.youtube.com/watch?v=xHXn3Kg2IQE">Android REST client applications</a>.</p>
+
+<p>Groundy is useful in any kind of apps that requires the use of background threads:</p>
+
+<ul>
+<li>Execute calls to external services (e.g. RESTful web services)</li>
+<li>Download and/or process files</li>
+<li>Encoding audio/video</li>
+<li>Any kind of task that could block the main thread</li>
+</ul><p>Groundy offers a special <code>Service</code> that will take care of creating background
+threads and allows to report results to the <code>Activity</code> using a <code>ResultReceiver</code>.</p>
+
+<h1>Basic usage</h1>
+
+<p>Create a subclass of <code>GroundyTask</code>:</p>
+
+<div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExampleTask</span> <span class="kd">extends</span> <span class="n">GroundyTask</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">boolean</span> <span class="nf">doInBackground</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// use params</span>
+        <span class="n">String</span> <span class="n">exampleParam</span> <span class="o">=</span> <span class="n">getStringParam</span><span class="o">(</span><span class="s">"key_name"</span><span class="o">);</span>
+
+        <span class="c1">// lots of code</span>
+
+        <span class="c1">// add results... this will be sent back to the activity</span>
+        <span class="c1">// through the ResultReceiver once this method has returned</span>
+        <span class="n">addStringResult</span><span class="o">(</span><span class="s">"the_result"</span><span class="o">,</span> <span class="s">"some result"</span><span class="o">);</span>
+
+        <span class="k">return</span> <span class="n">success</span><span class="o">;</span> <span class="c1">// true if task was executed successfully</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+<p>Whenever you want to execute the task, just do this:</p>
+
+<div class="highlight"><pre><span class="c1">// this is usually performed from within an Activity</span>
+<span class="n">Bundle</span> <span class="n">params</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Bundler</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="s">"key_name"</span><span class="o">,</span> <span class="s">"foo"</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+<span class="n">Groundy</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">ExampleTask</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+       <span class="o">.</span><span class="na">receiver</span><span class="o">(</span><span class="n">receiver</span><span class="o">)</span> <span class="c1">// optional</span>
+       <span class="o">.</span><span class="na">params</span><span class="o">(</span><span class="n">params</span><span class="o">)</span>     <span class="c1">// optional</span>
+       <span class="o">.</span><span class="na">queue</span><span class="o">();</span>
+</pre></div>
+
+<p>You will get results in your result receiver (in the main thread):</p>
+
+<div class="highlight"><pre><span class="kd">private</span> <span class="kd">final</span> <span class="n">ResultReceiver</span> <span class="n">receiver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ResultReceiver</span><span class="o">(</span><span class="k">new</span> <span class="n">Handler</span><span class="o">()){</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onReceiveResult</span><span class="o">(</span><span class="kt">int</span> <span class="n">resultCode</span><span class="o">,</span> <span class="n">Bundle</span> <span class="n">resultData</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="n">resultData</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">"the_result"</span><span class="o">);</span>
+        <span class="c1">// do something</span>
+    <span class="o">}</span>
+<span class="o">};</span>
+</pre></div>
+
+<p>Do not forget to add <code>GroundyService</code> to the <code>AndroidManifest.xml</code> file:</p>
+
+<div class="highlight"><pre><span class="nt">&lt;service</span> <span class="na">android:name=</span><span class="s">"com.codeslap.groundy.GroundyService"</span><span class="nt">/&gt;</span>
+</pre></div>
+
+<h1>Maven integration</h1>
+
+<p><a href="https://travis-ci.org/casidiablo/groundy"><img src="https://travis-ci.org/casidiablo/groundy.png?branch=develop" alt="Build Status"></a></p>
+
+<p>In order to use this library from you Android project using maven your pom should look like this:</p>
+
+<div class="highlight"><pre><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.codeslap<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>groundy<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>0.6<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>compile<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+
+<h1>License</h1>
+
+<blockquote>
+<p>Copyright 2013 CodeSlap</p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+</blockquote>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/casidiablo">casidiablo</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
 </html>
-
-
