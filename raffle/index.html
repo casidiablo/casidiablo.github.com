@@ -1,0 +1,138 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Raffle</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+    <link href="https://fonts.googleapis.com/css?family=Encode+Sans" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
+    <script src="app.js"></script>
+
+    <style>
+        * {
+            font-family: 'Encode Sans', sans-serif;
+        }
+
+        h1 a {
+            color: black;
+            text-decoration: none;
+        }
+
+        a {
+            color: #2b90d9;
+            text-decoration: none;
+        }
+
+        .center {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+        }
+
+        .button-secondary {
+            color: white;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            background: rgb(202, 60, 60);
+        }
+    </style>
+</head>
+<body>
+<div style="text-align: center;">
+    <h1><a href="https://www.thestrangeloop.com/">The Strange Loop 2017</a> - Ticket Raffle</h1>
+</div>
+
+<div class="center">
+    <p>I am raffling off my ticket to one of the most exciting conferences ever:
+        The Strange Loop 2017 conference, that will take place Sept 28-30th in St. Louis, MO.
+        <a href="https://www.thestrangeloop.com/schedule.html">See schedule.</a></p>
+    <p>Why? I bought the ticket a couple of months ago and something came up and I won't be
+        able to make it. I could transfer it to anyone but since I'm learning Ethereum development
+        I thought it would be fun to write my first real life smart contract. And here it is!</p>
+    <p style="font-size: 0.8em">I ran the idea through Alex Miller (conference's organizer) and he's OK with me
+        selling/raffling the ticket (he also kindly offered a full refund, but again, this is more fun.)</p>
+    <h2>Can you trust this?</h2>
+    <p>One of the challenges of this kind of contracts is that it requires participants
+        to trust the developer:</p>
+    <ul>
+        <li>How do you know I really have a ticket?</li>
+        <li>How do you know I will transfer it to the winner?</li>
+        <li>How do you know I won't rig the raffle by buying lots of tickets myself?</li>
+    </ul>
+    <p>I have <a href="https://ethereum.stackexchange.com/questions/24874">asked around</a> about possible
+        ways to inspire trustfulness, but have not found a single way to do so in a satisfying way.
+        So I'm trying multiple things:</p>
+    <ul>
+        <li>Participants should be able to get a refund if
+            a winner is not chosen in a specified deadline.
+        </li>
+        <li>Participants can choose where their money goes: either to me or the
+            <a href="https://www.ethereum.org/donate">Ethereum Foundation tip jar</a>.
+        </li>
+        <li>
+            The winner is chosen using a provably-fair algorithm (see smart-contract source code).
+        </li>
+        <li>
+            The source code of the contract is <a href="https://etherscan.io/address/0xf6acaf5aa6b25abdb2af45c7590948ee29a812b5#code">verified in Etherscan</a>.
+        </li>
+    </ul>
+    <div id="web3-enabled" style="display: none">
+        <div class="pure-g">
+            <div class="pure-u-1-2">
+                <h2>Buy tickets</h2>
+
+                <p>If you are interested, you can buy one or more tickets at 0.01 ETH each:</p>
+
+                <form class="pure-form">
+                    <input type="number" id="tickets" placeholder="Number of tickets" value="1"/>
+
+                    <label for="beneficiary">Beneficiary: </label>
+                    <select id="beneficiary">
+                        <option value="dev">Developer</option>
+                        <option value="ethereum-foundation">Ethereum Foundation</option>
+                    </select>
+                    <br/>
+                    <div style="text-align: center;">
+                        <a href="#" style="margin:10px; font-size: 2em;" class="pure-button pure-button-primary"
+                           id="buy-tickets">Buy Tickets</a>
+                    </div>
+                    <div style="text-align: center;">
+                        <a href="#" style="margin:10px; font-size: 2em; display: none;"
+                           class="pure-button button-secondary" id="get-refund">Get refund</a>
+                    </div>
+                </form>
+            </div>
+            <div class="pure-u-1-2"><h2>Raffle state</h2>
+
+                <span id="ticketsSold">0</span> tickets sold so far (<span id="balance">0</span> ETH).
+                <span id="ethereumFoundationTickets">0</span> will be donated to the Ethereum Foundation.
+
+                <p id="raffleTimeLeftContainer"><strong>Time left</strong>: <span id="raffleTimeLeft"></span></p>
+                <p id="winnerContainer"><strong>Winner:</strong>
+                <pre id="winner" style="font-size: 0.75em;"></pre>
+                </p>
+                <p><strong>Hashed secret seed</strong>:
+                <pre id="hashedSecret" style="font-size: 0.75em;">error</pre>
+                </p>
+                <p><strong>Current client seed</strong>:
+                <pre id="clientSeed" style="font-size: 0.75em;">none</pre>
+                </p></div>
+        </div>
+    </div>
+
+    <div id="web3-disabled" style="background: #FFEEE4; padding: 10px;">
+        <p>
+            You must have a browser that supports web3. You have a couple of options:
+        </p>
+        <ul>
+            <li>Install <a href="https://github.com/ethereum/mist/releases">Mist</a></li>
+            <li>If you use Chrome install <a href="https://metamask.io/">MetaMask</a></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
